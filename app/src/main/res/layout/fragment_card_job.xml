@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/user_card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/small_margin"
+    android:layout_margin="@dimen/small_margin"
+    android:background="@drawable/rounded_background"
+    tools:context=".activities.UsersFragment">
+
+    <TextView
+        android:id="@+id/job_organization"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/small_margin"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/job_organization_hint" />
+
+    <TextView
+        android:id="@+id/job_working"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/small_margin"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/job_organization"
+        tools:text="@string/job_working_period_hint"/>
+
+    <TextView
+        android:id="@+id/job_position"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/small_margin"
+        android:paddingTop="@dimen/medium_margin"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/job_working"
+        tools:text="@string/job_position_hint" />
+
+    <TextView
+        android:id="@+id/job_link"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/small_margin"
+        android:autoLink="web"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:paddingTop="@dimen/medium_margin"
+        android:textColor="@color/purple2"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/job_position"
+        tools:text="@string/job_link" />
+
+
+
+    <TextView
+        android:id="@+id/job_remove"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/medium_margin"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textColor="@color/red"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/job_link"
+        android:text="@string/job_remove" />
+
+    <TextView
+        android:id="@+id/job_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/medium_margin"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textColor="@color/purple3"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:visibility="visible"
+        app:layout_constraintEnd_toStartOf="@+id/job_remove"
+        app:layout_constraintTop_toBottomOf="@id/job_link"
+        android:text="@string/job_edit" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

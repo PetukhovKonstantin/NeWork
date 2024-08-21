@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/upload_photo"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_photo_camera_24"
+        android:title="@string/description_select_attachment"/>
+    <item
+        android:id="@+id/select_attachment"
+        android:enabled="true"
+        android:icon="@drawable/ic_attachment"
+        android:title="@string/description_select_attachment" />
+
+    <item
+        android:id="@+id/select_mentions"
+        android:enabled="true"
+        android:icon="@drawable/ic_mentions_24"
+        android:title="@string/description_select_users"/>
+    <item
+        android:id="@+id/select_location"
+        android:enabled="true"
+        android:icon="@drawable/ic_location"
+        android:title="@string/description_select_location" />
+</menu>

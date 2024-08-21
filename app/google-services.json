@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "861877465021",
+    "project_id": "nework-c8c64",
+    "storage_bucket": "nework-c8c64.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:861877465021:android:6618337a07a7f5bf416cd4",
+        "android_client_info": {
+          "package_name": "ru.netology.nework"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5vF5L1XAFabLGAEACZGFSM7qTekYudng"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
