@@ -135,6 +135,16 @@ class ProfileFragment : Fragment() {
                             true
                         }
 
+                        R.id.profile -> {
+                            findNavController().navigate(
+                                R.id.action_profileFragment_self,
+                                Bundle().apply {
+                                    userId = appAuth.authStateFlow.value.id
+                                }
+                            )
+                            true
+                        }
+
                         R.id.signout -> {
                             AlertDialog.Builder(requireActivity())
                                 .setTitle(R.string.are_you_suare)

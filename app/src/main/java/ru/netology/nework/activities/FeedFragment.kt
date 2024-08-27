@@ -70,9 +70,9 @@ class FeedFragment : Fragment() {
 
     private val mediaPlayer = MediaPlayer()
 
-    private val interactionListener = object : OnInteractionListener {
-        val isProfileFragment = arguments?.getBoolean(ARG_FROM_PAGER) ?: false
+    private var isProfileFragment = false
 
+    private val interactionListener = object : OnInteractionListener {
         override fun onTapAvatar(post: Post) {
             if (!isProfileFragment) {
                 findNavController().navigate(
@@ -179,11 +179,12 @@ class FeedFragment : Fragment() {
         }
 
         override fun onLink(post: Post) {
-            val intent = if (post.link?.contains("https://") == true || post.link?.contains("http://") == true) {
-                Intent(Intent.ACTION_VIEW, Uri.parse(post.link))
-            } else {
-                Intent(Intent.ACTION_VIEW, Uri.parse("http://${post.link}"))
-            }
+            val intent =
+                if (post.link?.contains("https://") == true || post.link?.contains("http://") == true) {
+                    Intent(Intent.ACTION_VIEW, Uri.parse(post.link))
+                } else {
+                    Intent(Intent.ACTION_VIEW, Uri.parse("http://${post.link}"))
+                }
             startActivity(intent)
         }
 
@@ -214,7 +215,7 @@ class FeedFragment : Fragment() {
         binding = FragmentFeedBinding.inflate(layoutInflater)
         adapter = PostAdapter(interactionListener)
 
-        val isProfileFragment = arguments?.getBoolean(ARG_FROM_PAGER) ?: false
+        isProfileFragment = arguments?.getBoolean(ARG_FROM_PAGER) ?: false
         val userId = arguments?.getLong(ARG_ID_USER) ?: 0L
 
         binding.list.adapter = adapter
@@ -269,6 +270,7 @@ class FeedFragment : Fragment() {
                                 )
                                 true
                             }
+
                             R.id.signup -> {
                                 findNavController().navigate(
                                     if (isProfileFragment) R.id.action_profileFragment_to_authFragment else R.id.action_feedFragment_to_authFragment,
@@ -278,6 +280,12 @@ class FeedFragment : Fragment() {
                                 )
                                 true
                             }
+
+                            R.id.profile -> {
+                                findNavController().navigate(R.id.action_feedFragment_to_profileFragment)
+                                true
+                            }
+
                             R.id.signout -> {
                                 AlertDialog.Builder(requireActivity())
                                     .setTitle(R.string.are_you_suare)
@@ -290,6 +298,7 @@ class FeedFragment : Fragment() {
                                     .show()
                                 true
                             }
+
                             else -> false
                         }
                     }
@@ -307,10 +316,12 @@ class FeedFragment : Fragment() {
                     findNavController().navigate(R.id.action_feedFragment_to_eventsFragment)
                     true
                 }
+
                 R.id.navigation_users -> {
                     findNavController().navigate(R.id.action_feedFragment_to_usersFragment)
                     true
                 }
+
                 else -> false
             }
         }

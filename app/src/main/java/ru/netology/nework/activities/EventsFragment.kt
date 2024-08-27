@@ -67,9 +67,9 @@ class EventsFragment : Fragment() {
 
     val mediaPlayer = MediaPlayer()
 
-    private val interactionListener = object : OnInteractionListenerEvent {
-        val isProfileFragment = arguments?.getBoolean(ARG_FROM_PAGER) ?: false
+    private var isProfileFragment = false
 
+    private val interactionListener = object : OnInteractionListenerEvent {
         override fun onTapAvatar(event: EventResponse) {
             if (!isProfileFragment) {
                 findNavController().navigate(
@@ -169,11 +169,12 @@ class EventsFragment : Fragment() {
         }
 
         override fun onLink(event: EventResponse) {
-            val intent = if (event.link?.contains("https://") == true || event.link?.contains("http://") == true) {
-                Intent(Intent.ACTION_VIEW, Uri.parse(event.link))
-            } else {
-                Intent(Intent.ACTION_VIEW, Uri.parse("http://${event.link}"))
-            }
+            val intent =
+                if (event.link?.contains("https://") == true || event.link?.contains("http://") == true) {
+                    Intent(Intent.ACTION_VIEW, Uri.parse(event.link))
+                } else {
+                    Intent(Intent.ACTION_VIEW, Uri.parse("http://${event.link}"))
+                }
             startActivity(intent)
         }
 
@@ -239,7 +240,7 @@ class EventsFragment : Fragment() {
         binding = FragmentEventsBinding.inflate(layoutInflater)
         adapter = EventAdapter(interactionListener)
 
-        val isProfileFragment = arguments?.getBoolean(ARG_FROM_PAGER) ?: false
+        isProfileFragment = arguments?.getBoolean(ARG_FROM_PAGER) ?: false
         val userId = arguments?.getLong(ARG_ID_USER) ?: 0L
 
         binding.list.adapter = adapter
@@ -293,6 +294,11 @@ class EventsFragment : Fragment() {
                                 true
                             }
 
+                            R.id.profile -> {
+                                findNavController().navigate(R.id.action_eventsFragment_to_profileFragment)
+                                true
+                            }
+
                             R.id.signout -> {
                                 AlertDialog.Builder(requireActivity())
                                     .setTitle(R.string.are_you_suare)
@@ -323,10 +329,12 @@ class EventsFragment : Fragment() {
                     findNavController().navigate(R.id.action_eventsFragment_to_feedFragment)
                     true
                 }
+
                 R.id.navigation_users -> {
                     findNavController().navigate(R.id.action_eventsFragment_to_usersFragment)
                     true
                 }
+
                 else -> false
             }
         }

@@ -86,6 +86,7 @@ class UsersFragment : Fragment() {
                             )
                             true
                         }
+
                         R.id.signup -> {
                             findNavController().navigate(
                                 R.id.action_usersFragment_to_authFragment,
@@ -95,6 +96,12 @@ class UsersFragment : Fragment() {
                             )
                             true
                         }
+
+                        R.id.profile -> {
+                            findNavController().navigate(R.id.action_usersFragment_to_profileFragment)
+                            true
+                        }
+
                         R.id.signout -> {
                             AlertDialog.Builder(requireActivity())
                                 .setTitle(R.string.are_you_suare)
@@ -107,6 +114,7 @@ class UsersFragment : Fragment() {
                                 .show()
                             true
                         }
+
                         else -> false
                     }
                 }
@@ -117,16 +125,18 @@ class UsersFragment : Fragment() {
 
         binding.mainNavView.selectedItemId = R.id.navigation_users
 
-        binding.mainNavView.setOnItemSelectedListener{ menuItem ->
+        binding.mainNavView.setOnItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.navigation_posts -> {
                     findNavController().navigate(R.id.action_usersFragment_to_feedFragment)
                     true
                 }
+
                 R.id.navigation_events -> {
                     findNavController().navigate(R.id.action_usersFragment_to_eventsFragment)
                     true
                 }
+
                 else -> false
             }
         }

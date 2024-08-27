@@ -240,6 +240,11 @@ class CardEventFragment : Fragment() {
                             true
                         }
 
+                        R.id.profile -> {
+                            findNavController().navigate(R.id.action_cardEventFragment_to_profileFragment)
+                            true
+                        }
+
                         R.id.signout -> {
                             AlertDialog.Builder(requireActivity())
                                 .setTitle(R.string.are_you_suare)

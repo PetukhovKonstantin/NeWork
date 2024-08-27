@@ -108,5 +108,6 @@
     <string name="tab_posts">Wall</string>
     <string name="tab_events">Events</string>
     <string name="tab_jobs">Jobs</string>
+    <string name="my_profile">My profile</string>
 
 </resources>

@@ -57,9 +57,9 @@ class JobsFragment : Fragment() {
 
     private val mediaPlayer = MediaPlayer()
 
-    private val interactionListener = object : OnInteractionListenerJob {
-        val isProfileFragment = arguments?.getBoolean(ARG_FROM_PAGER) ?: false
+    private var isProfileFragment = false
 
+    private val interactionListener = object : OnInteractionListenerJob {
         override fun onRemove(job: Job) {
             viewModel.removeById(job.id)
         }
@@ -93,10 +93,12 @@ class JobsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
+        isProfileFragment = arguments?.getBoolean(ARG_FROM_PAGER) ?: false
+
         binding = FragmentJobsBinding.inflate(layoutInflater)
         adapter = JobAdapter(interactionListener)
 
-        val isProfileFragment = arguments?.getBoolean(ARG_FROM_PAGER) ?: false
+
         val userId = arguments?.getLong(ARG_ID_USER) ?: 0L
 
         binding.list.adapter = adapter
@@ -148,6 +150,11 @@ class JobsFragment : Fragment() {
                                         textArg = getString(R.string.sign_up)
                                     }
                                 )
+                                true
+                            }
+
+                            R.id.profile -> {
+                                findNavController().navigate(R.id.action_jobsFragment_to_profileFragment)
                                 true
                             }
 

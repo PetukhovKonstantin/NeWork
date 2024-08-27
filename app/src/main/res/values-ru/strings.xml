@@ -108,4 +108,5 @@
     <string name="tab_posts">Стена</string>
     <string name="tab_events">События</string>
     <string name="tab_jobs">Работы</string>
+    <string name="my_profile">Мой профиль</string>
 </resources>
